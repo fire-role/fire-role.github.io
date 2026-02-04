@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fire Role - Association Jeu de Rôle & Société</title>
+    <meta name="description" content="Site officiel de Fire Role. Rejoignez nos aventures ludiques.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Inter:wght@400;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="dark-theme"> <!-- Default to dark for RPG vibe, script will adjust -->
+    <header class="glass-header">
+        <div class="container header-content">
+            <div class="logo-container">
+                <div class="logo-placeholder"></div>
+                <a href="#" class="logo">Fire <span>Role</span></a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home">Accueil</a></li>
+                    <li><a href="#about">L'Guilde</a></li>
+                    <li><a href="#gallery">Grimoire</a></li>
+                    <li><button id="theme-toggle" class="theme-btn" aria-label="Changer de thème">🌙</button></li>
+                    <li><a href="#contact" class="btn-primary">Nous rejoindre</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-bg"></div>
+            <div class="container hero-content">
+                <h1>Lancez les dés, <br><span class="highlight">Vivez l'Aventure</span></h1>
+                <p>Fire Role : L'association qui enflamme vos soirées jeux. JDR, jeux de plateau, et bonne humeur.</p>
+                <div class="hero-actions">
+                    <a href="#about" class="btn-primary">Découvrir la Guilde</a>
+                    <a href="#gallery" class="btn-secondary">Voir le Grimoire</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section info-section">
+            <div class="container">
+                <h2 class="section-title">Notre Quête</h2>
+                <div class="info-grid">
+                    <div class="info-card glass-card">
+                        <div class="icon">🎲</div>
+                        <h3>Jeux de Rôle</h3>
+                        <p>Incarnez des héros et vivez des épopées inoubliables, de D&D à Cthulhu.</p>
+                    </div>
+                    <div class="info-card glass-card">
+                        <div class="icon">♟️</div>
+                        <h3>Jeux de Plateau</h3>
+                        <p>Stratégie, ambiance ou coopération, nous avons des centaines de boîtes.</p>
+                    </div>
+                    <div class="info-card glass-card">
+                        <div class="icon">🔥</div>
+                        <h3>Convivialité</h3>
+                        <p>Des soirées ouvertes à tous, débutants comme vétérans du dé.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="section gallery-section">
+            <div class="container">
+                <h2 class="section-title">Nos Moments Forts</h2>
+                <p class="section-subtitle">Retour en images sur nos derniers événements.</p>
+
+                <div class="gallery-grid" id="gallery-grid">
+                    <!-- Gallery items will be populated here potentially or static -->
+                    <div class="gallery-item item-1"></div>
+                    <div class="gallery-item item-2"></div>
+                    <div class="gallery-item item-3"></div>
+                    <div class="gallery-item item-4"></div>
+                    <div class="gallery-item item-5"></div>
+                    <div class="gallery-item item-6"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-col">
+                <h3>Fire Role</h3>
+                <p>Aventure, Dés, Passion.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Liens</h4>
+                <ul>
+                    <li><a href="#home">Accueil</a></li>
+                    <li><a href="#about">L'Guilde</a></li>
+                    <li><a href="#gallery">Grimoire</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>maitre.jeu@firerole.org</p>
+                <p>Discord: FireRole#1234</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Association Fire Role. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

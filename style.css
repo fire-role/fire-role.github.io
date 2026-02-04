@@ -1,0 +1,528 @@
+:root {
+    /* Fonts */
+    --font-heading: 'Cinzel', serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+/* Light Theme Variables */
+body.light-theme {
+    --primary: #FF6A18;
+    --primary-glow: #FFA32C;
+    --secondary: #FFD658;
+    --bg-main: #FFF8F0;
+    /* Warm white */
+    --bg-card: rgba(255, 255, 255, 0.6);
+    --text-main: #1a0500;
+    --text-muted: #5c4033;
+    --glass-border: rgba(255, 106, 24, 0.2);
+    --hero-gradient: radial-gradient(circle at top right, #FF6A1833, transparent 50%),
+        radial-gradient(circle at bottom left, #FFD65833, transparent 50%);
+    --overlay-bg: rgba(255, 255, 255, 0.9);
+}
+
+/* Dark Theme Variables */
+body.dark-theme {
+    --primary: #7D258F;
+    --primary-glow: #C17FCE;
+    --secondary: #FF8762;
+    --bg-main: #1a0b1f;
+    /* Deep dark purple */
+    --bg-card: rgba(45, 20, 50, 0.6);
+    --text-main: #E2B6EB;
+    --text-muted: #cdb4db;
+    --glass-border: rgba(226, 182, 235, 0.1);
+    --hero-gradient: radial-gradient(circle at top right, #7D258F44, transparent 50%),
+        radial-gradient(circle at bottom left, #FF876233, transparent 50%);
+    --overlay-bg: rgba(10, 5, 13, 0.95);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--font-heading);
+    color: var(--text-main);
+    letter-spacing: 1px;
+}
+
+/* Theme Toggle Button */
+.theme-btn {
+    background: none;
+    border: 2px solid var(--primary);
+    color: var(--text-main);
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.theme-btn:hover {
+    background: var(--primary);
+    color: #fff;
+    transform: rotate(15deg);
+}
+
+/* Logo & Header */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo-placeholder {
+    width: 40px;
+    height: 40px;
+    background: var(--primary);
+    border-radius: 8px;
+    /* Slightly rounded squares for RPG dice/grid feel */
+    position: relative;
+    overflow: hidden;
+}
+
+.logo-placeholder::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background: var(--bg-main);
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3E%3C/svg%3E") no-repeat center;
+    mask-size: contain;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3E%3C/svg%3E") no-repeat center;
+    -webkit-mask-size: contain;
+    background-color: var(--bg-main);
+}
+
+.glass-header {
+    background: rgba(var(--bg-card), 0.2);
+    /* Needs adjustment if using hex vars, using simple fix below */
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--glass-border);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+/* Other styles preserved and updated for variables */
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: 0.3s;
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+}
+
+.logo span {
+    color: var(--primary);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-links a:not(.btn-primary):hover {
+    color: var(--primary);
+    text-shadow: 0 0 10px var(--primary-glow);
+}
+
+/* Buttons */
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary), var(--primary-glow));
+    color: white;
+    /* Always white text on primary buttons */
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    /* Sharper corners for RPG feel */
+    font-weight: 600;
+    display: inline-block;
+    border: 1px solid var(--glass-border);
+    font-family: var(--font-heading);
+    letter-spacing: 1px;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px var(--primary);
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: var(--text-main);
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    display: inline-block;
+    font-family: var(--font-heading);
+}
+
+.btn-secondary:hover {
+    background: var(--primary);
+    color: white;
+}
+
+/* Hero */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-top: 80px;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--hero-gradient);
+    z-index: -1;
+}
+
+.hero-content {
+    max-width: 800px;
+    position: relative;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.hero .highlight {
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+/* Section Glass Cards */
+.section {
+    padding: 5rem 0;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    color: var(--primary);
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.glass-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    /* RPG cards style */
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Decorate corners or borders for RPG feel */
+.glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+}
+
+.glass-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--secondary);
+    box-shadow: 0 10px 30px -10px var(--primary);
+}
+
+.info-card .icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.info-card h3 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: var(--primary);
+}
+
+.info-card p {
+    color: var(--text-muted);
+}
+
+/* Gallery */
+.gallery-section {
+    position: relative;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--text-muted);
+    margin-bottom: 3rem;
+    margin-top: -2rem;
+    font-style: italic;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-auto-rows: 250px;
+    gap: 1rem;
+}
+
+.gallery-item {
+    background-color: var(--bg-card);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: 0.3s;
+    background-size: cover;
+    background-position: center;
+    border: 1px solid var(--glass-border);
+}
+
+/* Placeholders kept same for now */
+.item-1 {
+    background-image: url('https://images.unsplash.com/photo-1544027993-37dbfe43562a?auto=format&fit=crop&q=80');
+    grid-column: span 2;
+}
+
+.item-2 {
+    background-image: url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&q=80');
+}
+
+.item-3 {
+    background-image: url('https://images.unsplash.com/photo-1610890716171-6b1bb98a72a3?auto=format&fit=crop&q=80');
+}
+
+/* Changed to dice/game */
+.item-4 {
+    background-image: url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&q=80');
+    grid-row: span 2;
+}
+
+.item-5 {
+    background-image: url('https://images.unsplash.com/photo-1605806616949-1e87b487bc2a?auto=format&fit=crop&q=80');
+}
+
+/* Changed to board game */
+.item-6 {
+    background-image: url('https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?auto=format&fit=crop&q=80');
+    grid-column: span 2;
+}
+
+.gallery-item:hover {
+    transform: scale(1.02);
+    filter: brightness(1.1);
+    box-shadow: 0 0 20px var(--primary);
+    border-color: var(--secondary);
+}
+
+/* Footer */
+.footer {
+    background: var(--bg-card);
+    padding: 4rem 0 2rem;
+    margin-top: 4rem;
+    border-top: 1px solid var(--glass-border);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.footer-col h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary);
+}
+
+.footer-col h4 {
+    margin-bottom: 1.5rem;
+    color: var(--text-main);
+}
+
+.footer-col ul li {
+    margin-bottom: 0.75rem;
+}
+
+.footer-col ul li a {
+    color: var(--text-muted);
+}
+
+.footer-col ul li a:hover {
+    color: var(--primary);
+    padding-left: 5px;
+}
+
+/* Little nudge effect */
+.footer-col p {
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid var(--glass-border);
+    color: var(--text-muted);
+    font-size: 0.875rem;
+}
+
+/* Lightbox */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--overlay-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.lightbox.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+    box-shadow: 0 0 20px var(--primary);
+    border: 2px solid var(--secondary);
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.lightbox.active img {
+    transform: scale(1);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: var(--text-main);
+    font-size: 3rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    transition: 0.3s;
+}
+
+.lightbox-close:hover {
+    color: var(--primary);
+    transform: rotate(90deg);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .header-content {
+        flex-direction: column;
+        height: auto;
+        padding: 1rem 0;
+    }
+
+    .nav-links {
+        margin-top: 1rem;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+}
