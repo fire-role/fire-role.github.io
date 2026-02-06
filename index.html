@@ -1,3 +1,6 @@
+---
+layout: null
+---
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -26,7 +29,7 @@
                     <li><a href="#about">L'Association</a></li>
                     <li><a href="#gallery">Grimoire</a></li>
                     <li><button id="theme-toggle" class="theme-btn" aria-label="Changer de thème">🌙</button></li>
-                    <li><a href="#contact" class="btn-primary">Nous rejoindre</a></li>
+                    <li><button id="contact-btn" class="btn-primary">Nous rejoindre</button></li>
                 </ul>
             </nav>
         </div>
@@ -49,31 +52,16 @@
             <div class="container">
                 <h2 class="section-title">Notre Quête</h2>
                 <div class="info-grid">
-                    <div class="info-card glass-card">
-                        <div class="icon">🐙</div>
-                        <h3>Jeux de Rôle</h3>
-                        <p>L'activité phare de l'association est bien sûr d'encadrer des parties de jeu de rôle avec des joueurs passionnés ou curieux de découvrir de nouveaux univers ! Les parties sont accessibles à tout le monde, débutants comme confirmés. Elles peuvent se dérouler dans des bars sur Lille ou dans des lieux partenaires de l'association. Nos Maîtres du jeu (ceux qui encadrent les parties) animent essentielles les jeux suivants : Donjons et Dragons, Cthulhu, Rêve de Dragons, Cats la Mascarade... Mais ils disposent d'une large collection de jeu dans tous type d'univers et seront ravis de vous les faire découvrir ! Une partie dure entre 3 et 6h selon le format et peut rassembler 3 à 6 joueurs. Certaines peuvent se dérouler sur plusieurs session si l'aventure vous passionne...</p>
-                    </div>
-                    <div class="info-card glass-card">
-                        <div class="icon">🌸</div>
-                        <h3>Jeux de société</h3>
-                        <p>Nous animons des parties de jeux, expliquons les règles et passons des moment conviviales pour toujours découvrir de nouveaux mondes dans la joie et la bonne humeur. Avec une collection d'une centaine de jeux qui se renouvelle, les découvertes ne manquent pas et même nous continuons d'en apprendre chaque jour ! Vous pouvez également nous retrouver en ligne sur nos univers de jeux vidéo préférés lors d'occasions particulières...</p>
-                    </div>
-                    <div class="info-card glass-card">
-                        <div class="icon">🛠️</div>
-                        <h3>Craft</h3>
-                        <p>Pour donner vie à notre passion, nous sommes également tous passionnés d'art en tout genre. Gravure, couture, dessin, bricolage... Nous avons tout pour donner vie à différents univers ! C'est la partie marché de l'association. En partie grâce à la vente de ces objets fabriqués à la maison avec amour, nous trouvons les fond pour financer nos événements et temps forts ! Nous organisons également ponctuellement des ateliers créatifs pour vous former à diverses techniques. Retrouvez nous en convention ou sur des marchés de créateurs pour découvrir tout ça !</p>
-                    </div>
-                    <div class="info-card glass-card">
-                        <div class="icon">🔥</div>
-                        <h3>Murder Party</h3>
-                        <p>Parmis les événements phares de l'association, les murder Party sont à l'honneur. Voyages dans le temps et dans les univers imaginaires pour incarner le temps d'une soirée un personnage et résoudre une enquête. Qui parmis vos voisins est coupable du pire ? Qui jouera pour son compte au détriment des autres ? Et qui aura à cœur de sauver la soirée en résolvant l'enquête ? Ces événements rassemblent entre 10 et 20 joueurs dans un lieu décoré pour l'occasion. La soirée a lieu en huit clôt et dure environ 3 à 5h selon le format.</p>
-                    </div>
-                    <div class="info-card glass-card">
-                        <div class="icon">🔥</div>
-                        <h3>Evènementiel</h3>
-                        <p>Avec Firerole nous avons pour ambition de créer des événements festifs et rassembleur à taille humaine dans une ambiance conviviale. Un des objectif est donc de s'associer à des lieux lillois pour animer des moments uniques et ludiques. Chasses au trésor dans la ville, marché du jeu, convention de jeu de rôle ou soirée festive dans des bars... Notre imagination n'a pas de limites.</p>
-                    </div>
+                    {% assign sorted_activities = site.activities | sort: 'order' %}
+                    {% for activity in sorted_activities %}
+                    <a href="{{ activity.url }}" class="card-link">
+                        <div class="info-card glass-card">
+                            <img src="{{ activity.icon }}" alt="{{ activity.title }} icon" class="card-icon">
+                            <h3>{{ activity.title }}</h3>
+                            <p>{{ activity.description }}</p>
+                        </div>
+                    </a>
+                    {% endfor %}
                 </div>
             </div>
         </section>
@@ -120,6 +108,20 @@
             <p>&copy; 2024 Association Fire Role. Tous droits réservés.</p>
         </div>
     </footer>
+
+    <!-- Contact Modal -->
+    <div id="contact-modal" class="modal">
+        <div class="modal-content glass-card">
+            <span class="close-modal">&times;</span>
+            <h2>Nous Rejoindre</h2>
+            <p>Envie de lancer les dés avec nous ?</p>
+            <div class="contact-box">
+                <input type="text" value="maitre.jeu@firerole.org" id="contact-email" readonly>
+                <button id="copy-email-btn" class="btn-secondary">Copier</button>
+            </div>
+            <p class="copy-success" id="copy-success">Adresse copiée !</p>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

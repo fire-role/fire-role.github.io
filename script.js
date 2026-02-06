@@ -89,8 +89,62 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Close on Escape key
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-            closeLightbox();
+        if (e.key === 'Escape') {
+            if (lightbox.classList.contains('active')) closeLightbox();
+            if (contactModal.classList.contains('active')) closeContactModal();
         }
     });
+
+    // Contact Modal Logic
+    const contactBtn = document.getElementById('contact-btn');
+    const contactLinks = document.querySelectorAll('a[href="#contact"]');
+    const contactModal = document.getElementById('contact-modal');
+    const closeContactBtn = document.querySelector('.close-modal');
+    const copyEmailBtn = document.getElementById('copy-email-btn');
+    const emailInput = document.getElementById('contact-email');
+    const copySuccessMsg = document.getElementById('copy-success');
+
+    function openContactModal(e) {
+        if (e) e.preventDefault();
+        contactModal.classList.add('active');
+    }
+
+    function closeContactModal() {
+        contactModal.classList.remove('active');
+        copySuccessMsg.classList.remove('visible');
+    }
+
+    if (contactBtn) contactBtn.addEventListener('click', openContactModal);
+    
+    // Also attach to any link pointing to #contact
+    contactLinks.forEach(link => {
+        link.addEventListener('click', openContactModal);
+    });
+
+    if (closeContactBtn) closeContactBtn.addEventListener('click', closeContactModal);
+
+    window.addEventListener('click', (e) => {
+        if (e.target === contactModal) {
+            closeContactModal();
+        }
+    });
+
+    if (copyEmailBtn) {
+        copyEmailBtn.addEventListener('click', () => {
+            emailInput.select();
+            emailInput.setSelectionRange(0, 99999); // For mobile
+            
+            navigator.clipboard.writeText(emailInput.value).then(() => {
+                copySuccessMsg.classList.add('visible');
+                setTimeout(() => {
+                    copySuccessMsg.classList.remove('visible');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+                // Fallback for non-secure contexts if needed
+                document.execCommand('copy');
+                copySuccessMsg.classList.add('visible');
+            });
+        });
+    }
 });

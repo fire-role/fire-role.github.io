@@ -1,0 +1,16 @@
+title: Fire Role
+description: Association Jeu de Rôle & Société
+baseurl: ""
+url: ""
+
+collections:
+  activities:
+    output: true
+    permalink: /activities/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: "activities"
+    values:
+      layout: "activity"
