@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }} - Fire Role</title>
+    <meta name="description" content="{{ page.description }}">
+    <link rel="stylesheet" href="{{ "/style.css" | relative_url }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body class="dark-theme">
+    <header class="glass-header">
+        <div class="container header-content">
+            <div class="logo-container">
+                <a href="{{ "/" | relative_url }}" class="logo">Fire <span>Role</span></a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="{{ "/#home" | relative_url }}">Accueil</a></li>
+                    <li><a href="{{ "/#about" | relative_url }}">L'Association</a></li>
+                    <li><a href="{{ "/#gallery" | relative_url }}">Grimoire</a></li>
+                    <li><button id="theme-toggle" class="theme-btn" aria-label="Changer de thème">🌙</button></li>
+                    <li><a href="{{ "/#contact" | relative_url }}" class="btn-primary">Nous rejoindre</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container page-content">
+        <div class="activity-layout">
+            <aside class="sidebar">
+                <div class="toc-sticky">
+                    <h3>Sommaire</h3>
+                    <nav id="toc"></nav>
+                    <a href="{{ "/#about" | relative_url }}" class="btn-secondary back-btn">← Retour</a>
+                </div>
+            </aside>
+            <article class="content glass-card">
+                <div class="activity-header">
+                    <img src="{{ page.icon | relative_url }}" alt="{{ page.title }}" class="activity-icon-large">
+                    <h1>{{ page.title }}</h1>
+                </div>
+                <div class="markdown-body">
+                    {{ content }}
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-col">
+                <h3>Fire Role</h3>
+                <p>Aventure, Dés, Passion.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Liens</h4>
+                <ul>
+                    <li><a href="{{ "/#home" | relative_url }}">Accueil</a></li>
+                    <li><a href="{{ "/#about" | relative_url }}">L'Association</a></li>
+                    <li><a href="{{ "/#gallery" | relative_url }}">Grimoire</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>maitre.jeu@firerole.org</p>
+                <p>Discord: FireRole#1234</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Association Fire Role. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="{{ "/script.js" | relative_url }}"></script>
+    <script>
+        // Simple Auto-TOC script
+        document.addEventListener('DOMContentLoaded', () => {
+            const toc = document.getElementById('toc');
+            const headers = document.querySelectorAll('.markdown-body h2, .markdown-body h3');
+            const ul = document.createElement('ul');
+            
+            headers.forEach(header => {
+                if (!header.id) {
+                    header.id = header.innerText.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+                }
+                const li = document.createElement('li');
+                li.className = header.tagName.toLowerCase();
+                const a = document.createElement('a');
+                a.href = '#' + header.id;
+                a.innerText = header.innerText;
+                li.appendChild(a);
+                ul.appendChild(li);
+            });
+            
+            if (headers.length > 0) {
+                toc.appendChild(ul);
+            } else {
+                toc.innerHTML += '<p>Pas de sommaire</p>';
+            }
+        });
+    </script>
+</body>
+</html>
