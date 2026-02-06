@@ -23,6 +23,16 @@ document.addEventListener('DOMContentLoaded', () => {
     if (savedTheme) {
         body.className = savedTheme;
         updateThemeIcon(savedTheme);
+    } else {
+        // Time-based default (Dark between 18h and 7h, Light otherwise)
+        const hour = new Date().getHours();
+        if (hour >= 18 || hour < 7) {
+            body.className = 'dark-theme';
+            updateThemeIcon('dark-theme');
+        } else {
+            body.className = 'light-theme';
+            updateThemeIcon('light-theme');
+        }
     }
 
     themeBtn.addEventListener('click', () => {
@@ -115,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (contactBtn) contactBtn.addEventListener('click', openContactModal);
-    
+
     // Also attach to any link pointing to #contact
     contactLinks.forEach(link => {
         link.addEventListener('click', openContactModal);
@@ -133,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
         copyEmailBtn.addEventListener('click', () => {
             emailInput.select();
             emailInput.setSelectionRange(0, 99999); // For mobile
-            
+
             navigator.clipboard.writeText(emailInput.value).then(() => {
                 copySuccessMsg.classList.add('visible');
                 setTimeout(() => {
