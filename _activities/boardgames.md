@@ -1,7 +1,7 @@
 ---
 layout: activity
 title: Jeux de société
-icon: assets/icons/placeholder.png
+icon: /assets/icons/boardgames.png
 order: 2
 description: "Nous animons des parties de jeux, expliquons les règles et passons des moment conviviales pour toujours découvrir de nouveaux mondes."
 ---

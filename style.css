@@ -116,6 +116,13 @@ h4 {
     background-color: var(--bg-main);
 }
 
+.main-logo-img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    border-radius: 8px; /* Matching the placeholder's original style */
+}
+
 .glass-header {
     background: rgba(var(--bg-card), 0.2);
     /* Needs adjustment if using hex vars, using simple fix below */

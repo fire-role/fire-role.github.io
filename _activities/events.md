@@ -1,7 +1,7 @@
 ---
 layout: activity
 title: Evènementiel
-icon: assets/icons/placeholder.png
+icon: /assets/icons/events.png
 order: 5
 description: "Avec Firerole nous avons pour ambition de créer des événements festifs et rassembleur à taille humaine dans une ambiance conviviale."
 ---
