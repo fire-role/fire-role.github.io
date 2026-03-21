@@ -1,7 +1,7 @@
 ---
 layout: activity
 title: Jeux de Rôle
-icon: assets/icons/placeholder.png
+icon: /assets/icons/roleplay.png
 order: 1
 description: "L'activité phare de l'association est bien sûr d'encadrer des parties de jeu de rôle avec des joueurs passionnés ou curieux de découvrir de nouveaux univers !"
 ---

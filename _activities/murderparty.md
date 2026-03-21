@@ -1,7 +1,7 @@
 ---
 layout: activity
 title: Murder Party
-icon: assets/icons/placeholder.png
+icon: /assets/icons/murdur_party.png
 order: 4
 description: "Parmis les événements phares de l'association, les murder Party sont à l'honneur. Voyages dans le temps et enquête."
 ---
