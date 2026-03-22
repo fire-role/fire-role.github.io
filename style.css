@@ -771,3 +771,9 @@ ul {
         text-align: center;
     }
 }
+
+
+/* Will be disabled by JavaScript when the theme is loaded */
+body{ 
+    display: none; 
+}
