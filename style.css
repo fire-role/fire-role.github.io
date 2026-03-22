@@ -146,6 +146,7 @@ a {
 
 ul {
     list-style: none;
+    display: inline-block;
 }
 
 .container {
@@ -769,4 +770,10 @@ ul {
         grid-template-columns: 1fr;
         text-align: center;
     }
+}
+
+
+/* Will be disabled by JavaScript when the theme is loaded */
+body{ 
+    display: none; 
 }
