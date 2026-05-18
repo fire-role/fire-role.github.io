@@ -157,4 +157,43 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Mobile Hamburger Menu Logic
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+    const menuOverlay = document.getElementById('menu-overlay');
+
+    if (menuToggle && navLinks && menuOverlay) {
+        const toggleMenu = () => {
+            const isOpen = navLinks.classList.contains('active');
+            if (isOpen) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        };
+
+        const openMenu = () => {
+            menuToggle.classList.add('active');
+            navLinks.classList.add('active');
+            menuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        };
+
+        const closeMenu = () => {
+            menuToggle.classList.remove('active');
+            navLinks.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        menuToggle.addEventListener('click', toggleMenu);
+        menuOverlay.addEventListener('click', closeMenu);
+
+        // Close menu when clicking on any nav link (e.g. for anchor navigation)
+        navLinks.querySelectorAll('a, button').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+    }
+});
+});
 });
