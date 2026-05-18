@@ -157,7 +157,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-<<<<<<< HEAD
     // Mobile Hamburger Menu Logic
     const menuToggle = document.getElementById('menu-toggle');
     const navLinks = document.getElementById('nav-links');
@@ -196,6 +195,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
-=======
 });
->>>>>>> origin/main
+});
