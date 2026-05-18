@@ -1,6 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("Site de l'Association Avenir chargé.");
-
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -34,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
             updateThemeIcon('light-theme');
         }
     }
+    document.body.style.display = "block";
 
     themeBtn.addEventListener('click', () => {
         if (body.classList.contains('dark-theme')) {
@@ -158,6 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+<<<<<<< HEAD
     // Mobile Hamburger Menu Logic
     const menuToggle = document.getElementById('menu-toggle');
     const navLinks = document.getElementById('nav-links');
@@ -196,3 +196,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+=======
+});
+>>>>>>> origin/main
