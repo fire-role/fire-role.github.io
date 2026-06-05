@@ -5,8 +5,6 @@ icon: /assets/icons/events.png
 order: 5
 description: "Avec Firerole nous avons pour ambition de créer des événements festifs et rassembleur à taille humaine dans une ambiance conviviale."
 ---
-# Evènementiel
-
 Avec Firerole nous avons pour ambition de créer des événements festifs et rassembleur à taille humaine dans une ambiance conviviale. Un des objectif est donc de s'associer à des lieux lillois pour animer des moments uniques et ludiques.
 
 ## Nos Activités
