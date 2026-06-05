@@ -731,7 +731,30 @@ ul {
     animation: fadeIn 0.3s ease;
 }
 
-@keyframes fadeIn {
+/* Title animation for activity pages */
+.activity-layout {
+    --title-color: var(--primary); /* default */
+}
+/* Specific colors per activity (adjust to logo colors) */
+.activity-layout.murder-party {
+    --title-color: #e63946; /* red tone matching murder‑party logo */
+}
+.activity-layout.roleplay {
+    --title-color: #ff9900; /* example orange tone */
+}
+.activity-layout.jeu-de-role {
+    --title-color: #ff9900; /* same as roleplay if needed */
+}
+.activity-layout .markdown-body h1 {
+    color: var(--title-color);
+    animation: title-glow 2s ease-in-out infinite alternate;
+    /* subtle shimmer effect */
+}
+@keyframes title-glow {
+    0% { text-shadow: 0 0 5px var(--title-color); }
+    100% { text-shadow: 0 0 15px var(--title-color); }
+}
+
     from { opacity: 0; }
     to { opacity: 1; }
 }
