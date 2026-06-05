@@ -731,43 +731,86 @@ ul {
     animation: fadeIn 0.3s ease;
 }
 
-/* Title animation for activity pages */
-.activity-layout {
-    --title-color: var(--primary); /* default */
-}
-/* Specific colors per activity (adjust to logo colors) */
-.activity-layout.murder-party {
-    --title-color: #e63946; /* red tone matching murder‑party logo */
-}
-.activity-layout.roleplay {
-    --title-color: #ff9900; /* example orange tone */
-}
-.activity-layout.jeu-de-role {
-    --title-color: #ff9900; /* same as roleplay if needed */
-}
-.activity-layout .markdown-body h1 {
-    color: var(--title-color);
-    animation: title-glow 2s ease-in-out infinite alternate;
-    /* subtle shimmer effect */
-}
-@keyframes title-glow {
-    0% { text-shadow: 0 0 5px var(--title-color); }
-    100% { text-shadow: 0 0 15px var(--title-color); }
-}
-
+@keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
 }
 
-/* Flame letter animation */
-.title-flame .flame-letter {
-    display: inline-block;
-    animation: flame 1.5s ease-in-out infinite alternate;
+/* ===== Flame shimmer animation for activity page titles ===== */
+
+/* Default flame palette (uses theme primary) */
+.activity-layout {
+    --flame-dark: var(--primary);
+    --flame-mid: var(--primary-glow);
+    --flame-light: var(--secondary);
 }
-@keyframes flame {
-    0% { text-shadow: 0 0 2px var(--title-color), 0 0 4px var(--title-color); }
-    50% { text-shadow: 0 0 6px var(--title-color), 0 0 12px var(--title-color); }
-    100% { text-shadow: 0 0 2px var(--title-color), 0 0 4px var(--title-color); }
+
+/* Murder Party — warm red/coral like the logo */
+.activity-layout[data-activity="murderparty"] {
+    --flame-dark: #6b0f0f;
+    --flame-mid: #e63946;
+    --flame-light: #ff8b72;
+}
+
+/* Jeux de Rôle — purple/lavender like the logo */
+.activity-layout[data-activity="roleplay"] {
+    --flame-dark: #4a148c;
+    --flame-mid: #9c5fbf;
+    --flame-light: #d4a5e8;
+}
+
+/* Jeux de société — pink like the logo */
+.activity-layout[data-activity="boardgames"] {
+    --flame-dark: #880e4f;
+    --flame-mid: #e91e8b;
+    --flame-light: #ff80ab;
+}
+
+/* Craft — green like the logo */
+.activity-layout[data-activity="craft"] {
+    --flame-dark: #1b5e20;
+    --flame-mid: #43a047;
+    --flame-light: #a5d6a7;
+}
+
+/* Evènementiel — blue like the logo */
+.activity-layout[data-activity="events"] {
+    --flame-dark: #0d47a1;
+    --flame-mid: #42a5f5;
+    --flame-light: #bbdefb;
+}
+
+/* Title container */
+.activity-header h1 {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+}
+
+/* Each character wrapped by JS */
+.flame-char {
+    display: inline-block;
+    background: linear-gradient(
+        0deg,
+        var(--flame-dark) 0%,
+        var(--flame-mid) 40%,
+        var(--flame-light) 80%,
+        var(--flame-mid) 100%
+    );
+    background-size: 100% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: flameShimmer 1.6s ease-in-out infinite alternate;
+}
+
+@keyframes flameShimmer {
+    0% {
+        background-position: 0% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
 }
 
 

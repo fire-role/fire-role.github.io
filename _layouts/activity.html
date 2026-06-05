@@ -40,7 +40,7 @@
     </header>
 
     <main class="container page-content">
-        <div class="activity-layout {{ page.title | slugify }}">
+        <div class="activity-layout" data-activity="{{ page.slug | default: page.title | slugify: 'latin' }}">
             <aside class="sidebar">
                 <div class="toc-sticky">
                     <h3>Sommaire</h3>

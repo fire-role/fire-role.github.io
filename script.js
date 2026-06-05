@@ -194,4 +194,23 @@ document.addEventListener('DOMContentLoaded', () => {
             link.addEventListener('click', closeMenu);
         });
     }
+
+    // ===== Flame shimmer on activity page titles =====
+    const activityH1 = document.querySelector('.activity-header h1');
+    if (activityH1) {
+        const text = activityH1.textContent.trim();
+        activityH1.innerHTML = '';
+        for (let i = 0; i < text.length; i++) {
+            const ch = text[i];
+            const span = document.createElement('span');
+            span.className = 'flame-char';
+            span.textContent = ch === ' ' ? '\u00A0' : ch;
+            // Stagger each letter with a slightly different delay and duration
+            const delay = ((i * 0.12) % 1.4).toFixed(2);
+            const duration = (1.4 + Math.sin(i * 0.7) * 0.4).toFixed(2);
+            span.style.animationDelay = delay + 's';
+            span.style.animationDuration = duration + 's';
+            activityH1.appendChild(span);
+        }
+    }
 });
