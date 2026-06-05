@@ -5,8 +5,6 @@ icon: /assets/icons/boardgames.png
 order: 2
 description: "Nous animons des parties de jeux, expliquons les règles et passons des moment conviviales pour toujours découvrir de nouveaux mondes."
 ---
-# Jeux de société
-
 Nous animons des parties de jeux, expliquons les règles et passons des moment conviviales pour toujours découvrir de nouveaux mondes dans la joie et la bonne humeur.
 
 ## Notre Collection

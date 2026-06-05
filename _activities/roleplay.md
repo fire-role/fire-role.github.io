@@ -5,8 +5,6 @@ icon: /assets/icons/roleplay.png
 order: 1
 description: "L'activité phare de l'association est bien sûr d'encadrer des parties de jeu de rôle avec des joueurs passionnés ou curieux de découvrir de nouveaux univers !"
 ---
-# Jeux de Rôle
-
 L'activité phare de l'association est bien sûr d'encadrer des parties de jeu de rôle avec des joueurs passionnés ou curieux de découvrir de nouveaux univers ! Les parties sont accessibles à tout le monde, débutants comme confirmés.
 
 ## Où et Quand ?

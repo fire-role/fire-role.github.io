@@ -5,8 +5,6 @@ icon: /assets/icons/craft.png
 order: 3
 description: "Pour donner vie à notre passion, nous sommes également tous passionnés d'art en tout genre. Gravure, couture, dessin, bricolage..."
 ---
-# Craft
-
 Pour donner vie à notre passion, nous sommes également tous passionnés d'art en tout genre. Gravure, couture, dessin, bricolage... Nous avons tout pour donner vie à différents univers !
 
 ## Le Marché
