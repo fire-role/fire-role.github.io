@@ -239,6 +239,15 @@ ul {
     letter-spacing: 1px;
 }
 
+/* Consistent "Nous rejoindre" button in navbar across all pages */
+.nav-links .btn-primary {
+    padding: 0.6rem 1.2rem;
+    font-size: clamp(0.75rem, 1vw, 1rem);
+    white-space: nowrap;
+    text-align: center;
+    cursor: pointer;
+}
+
 .btn-primary:hover {
     transform: translateY(-2px);
     box-shadow: 0 0 15px var(--primary);
@@ -782,9 +791,17 @@ ul {
 
 /* Title container */
 .activity-header h1 {
-    display: inline-flex;
+    display: flex;
     flex-wrap: wrap;
     align-items: baseline;
+    font-size: clamp(1.2rem, 4vw, 2.5rem);
+}
+
+/* Word wrapper: prevents line-break inside a word */
+.flame-word {
+    display: inline-flex;
+    white-space: nowrap;
+    margin-right: 0.3em;
 }
 
 /* Each character wrapped by JS */
@@ -1023,8 +1040,9 @@ ul {
         width: 100%;
         display: block;
         padding: 1.2rem;
-        font-size: 1.2rem;
+        font-size: clamp(1rem, 3vw, 1.2rem);
         border-radius: 50px;
+        white-space: nowrap;
     }
 
     .footer-content {
